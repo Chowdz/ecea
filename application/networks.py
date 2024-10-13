@@ -104,11 +104,7 @@ class Attention(nn.Module):
         # @: matrix multiplication -> [batch_size, num_heads, num_patches, embed_dim_per_head]
         # transpose: -> [batch_size, num_patches, num_heads, embed_dim_per_head]
         # reshape: -> [batch_size, num_patches, total_embed_dim]
-        x = (attn @ v).transpose(1, 2).reshape(B, N, C)  # This x is already the E(v)
-
-        x = x * gate
-        x = self.proj(x)
-        x = self.proj_drop(x)
+        x = (attn @ v).transpose(1, 2).reshape(B, N, C)
 
         # Chebyshev's Inequality Adjustment
         # Since x is already E(v), we directly compute the standard deviation
@@ -118,6 +114,10 @@ class Attention(nn.Module):
         lower_bound = x - self.k_value * std_v
         upper_bound = x + self.k_value * std_v
         x = torch.max(lower_bound, torch.min(upper_bound, x))  # Apply the upper and lower bounds
+
+        x = x * gate
+        x = self.proj(x)
+        x = self.proj_drop(x)
 
         return x
 
