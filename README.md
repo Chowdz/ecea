@@ -40,7 +40,7 @@ we downloaded two datasets: the [LANDSAT/LE07/C02/T1\_TOA collection](https://do
 
    ```python trainer.py --BATCH_SIZE 10 --EPOCH 1 --N_EPOCH 500 --LR 0.0005 --BETA1 0.95 --BETA2 0.9995 --TRAIN_IMG_ROOT 'home/train' --TRAIN_MASK_ROOT 'home/mask' --TRAIN_RESULT_ROOT 'home/result/' --SAVE_MODEL_ROOT 'home/models/' --IMG_SIZE 256 --IN_C 4 --OUT_C 3 --PATCH_SIZE 4 --EMBED_DIM --DEPTH [1, 2, 3, 4] --NUM_HEADS [1, 2, 4, 8] --ADV_LOSS_WEIGHT 1 --PER_LOSS_WEIGHT 0.5 --STY_LOSS_WEIGHT 10000 --L1_LOSS_WEIGHT 100 --CSHE_LOSS_WEIGHT 80 --SAMPLE_INTERVAL 500```
 
-   Note: The --TRAIN_IMG_ROOT and --TRAIN_MASK_ROOT parameters refer to the folders containing Landsat-7 ETM+ training satellite images and missing pixel masks, respectively. Each image in these folders should have been pre-cut to a size of 256×256 pixels.
+   Note: The --TRAIN_IMG_ROOT and --TRAIN_MASK_ROOT parameters refer to the folders containing training satellite images and missing pixel masks, respectively. Each image in these folders should have been pre-cut to a size of 256×256 pixels.
 
 2. Tensorboard:
 
