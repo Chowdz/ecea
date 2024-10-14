@@ -95,7 +95,7 @@ ValueError: If input_path is not a file or output_path is not a directory.
 
 ### Steps:
 
-1. ```cd landsat-7_eet/application```
+1. ```cd ecea/application```
 
 2. ```python main.py --INPUT_IMG_PATH '/home/user/dataset/CorruptedImage.tif' --OUTPUT_IMG_PATH '/home/user/dataset/InpaintingImages/' --VIS_PARAM {'min': 0, 'max': 0.4, 'gamma': 1.4}```
 
